@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SU Smack Extensions">
+        <body>
+           <links>
+              <item name="SU OpenSoruce" href="http://devel.it.su.se/" />
+              <item name="Smack" href="http://www.jivesoftware.org/smack/" />
+           </links>
+           <menu name="Documentation">
+               <item name="Testing Caveat" href="testing.html"/>
+           </menu>
+           ${reports}
+        </body>
+</project>

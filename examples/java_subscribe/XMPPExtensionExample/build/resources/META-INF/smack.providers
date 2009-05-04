@@ -1,0 +1,20 @@
+<?xml version="1.0"?> 
+<smackProviders> 
+    
+    <!-- ExampleIQExtension -->
+    <iqProvider> 
+        <elementName>query</elementName> 
+        <namespace>jabber:iq:exampleiqpacket</namespace> 
+        <className>net.smilingj.xmpp.smack.exampleextension.common.ExampleIQPacket</className> 
+    </iqProvider>
+    
+    <!-- ExamplePacketExtension -->
+	<smackProviders>
+		<extensionProvider>
+			<elementName>exampleextension</elementName>
+			<namespace>http://smilingj.net/xmpp</namespace>
+			<className>net.smilingj.xmpp.smack.exampleextension.common.ExamplePacketExtension$Provider</className>
+		</extensionProvider>
+	</smackProviders>
+    
+</smackProviders>

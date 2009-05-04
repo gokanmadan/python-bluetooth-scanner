@@ -1,0 +1,66 @@
+Author: Ben Congleton <bcx@umich.edu> - http://be-n.com/portfolio - University of Michigan School of Information
+
+SimpleBluetooth Scanner
+
+
+This is a VERY simple example of basic fast bluetooth scanner
+that uses 2 physical bluetooth dongles to detech nearby users at a rapid rate
+
+It is adapted from the bluetooth module in SSAPP (Simple Sensor Architecture for Pervasive Prototyping),
+but designed to be even easier to use.
+
+You will need a few libraries to make this work:
+
+sudo apt-get install bluetooth bluez libbluetooth-dev python-setuptools python-bluez curl
+
+sudo easy_install simplejson 
+
+To use jabber you will need to install twisted
+
+sudo easy_install twisted
+
+To use Nokoscope you will need a copy of the Nokia eb2lib from nokia.
+
+
+Caveats:
+	This scanner assumes that your servers will be up, and not slow.  If they are down, or really slow
+	it will still work, but it won't be quite as synchronous.
+
+
+Usage:
+	python bluetooth_scanner.py --help
+	
+	# Run with a sample data set:
+	python bluetooth_scanner.py -v --input examples/example_files/input.txt \
+								--names_file examples/example_files/names.txt 
+								
+	# post to a URL:
+	python bluetooth_scanner.py  --url http://localhost:8000/process.php
+	
+	# send over jabber (data embedded into presence packets)
+	python bluetooth_scanner.py -v --input examples/example_files/input.txt \
+								   --names_file examples/example_files/names.txt \
+								   --jabber_user=ben@localhost --jabber_password=test 
+	
+	
+	# post to Nokoscope (Alpha Nokia Product)
+	python bluetooth_scanner.py -v --input examples/example_files/input.txt \
+								   --names_file examples/example_files/names.txt \
+								   --nokoscope_user=umich.003 --nokoscope_token=489655ace0c49574025373f59aa8f26b92138cce
+	
+	# publish over XMPP using pub subscribe
+	python bluetooth_scanner.py -v --input examples/example_files/input.txt --names_file examples/example_files/names.txt --jabber_user=test@pubjab.be-n.com --jabber_password=test --jabber_pubsub 
+
+
+TODO:
+* put on GIThub
+* make simple video demonstrating it
+* simple example application.
+
+-- 
+tommorrow todo:
+
+Mouly-- YUI -- and Virtual Machine.
+
+
+

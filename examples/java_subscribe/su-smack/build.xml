@@ -1,0 +1,101 @@
+<project name="MyProject" default="compile" basedir=".">
+    <description>
+        simple example build file
+    </description>
+  <!-- set global properties for this build -->
+
+<!--  <property name="src" location="trunk/src/main/java"/>
+-->
+  <property name="src" location="trunk/src/test/java"/>
+
+
+  <property name="test_src" location="trunk/src/test/java"/>
+
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+  <property name="lib"  location="lib"/>
+  <property name="classpath" location="../lib/smack.jar:../lib/smackx.jar:lib/commons-logging-1.1.1/commons-logging-1.1.1.jar:lib/commons-lang-2.4/commons-lang-2.4.jar:lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0.jar:lib/log4j-1.2.15.jar"/>
+
+<!--
+  <property name="classpath" location="../smack_3_1_0/smack.jar:../smack_3_1_0/smackx.jar:lib/commons-logging-1.1.1/commons-logging-1.1.1.jar:lib/commons-lang-2.4/commons-lang-2.4.jar:lib/commons-beanutils-1.8.0/commons-beanutils-1.8.0.jar:lib/log4j-1.2.15.jar"/>
+-->
+
+  <property name="main_class"  value="se.su.it.smack.tests.PubSubPublishTest"/>
+  <property name="jarfile"  value="su_smack" />
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}">
+		<classpath>
+		      <pathelement path="${classpath}"/>
+		      <fileset dir="${lib}">
+		        <include name="**/*.jar"/>
+		      </fileset>
+	    </classpath>
+	</javac> <!-- classpath="${classpath}"/> -->
+	<!-- compile the tests as well -->
+	<javac srcdir="${test_src}" destdir="${build}">
+		<classpath>
+		      <pathelement path="${classpath}"/>
+		      <fileset dir="${lib}">
+		        <include name="**/*.jar"/>
+		      </fileset>
+	    </classpath>
+	</javac> <!-- classpath="${classpath}"/> -->
+    
+	
+  </target>
+
+
+
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}"/>
+    <mkdir dir="${dist}/lib"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/${jarfile}.jar" basedir="${build}"/>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    
+	<delete dir="${build}"/>
+    <delete dir="${dist}"/>
+	
+  </target>
+  
+  <target name="run" depends="dist">
+    <java classname="${main_class}" fork="true">
+      <classpath>
+		<pathelement path="${classpath}"/>
+	    <fileset dir="/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Classes/">
+          <include name="**/*.jar"/>
+        </fileset>		
+	    <fileset dir="${dist}">
+          <include name="**/*.jar"/>
+        </fileset>
+
+		<path location="${build}"/>
+	    <fileset dir="${lib}">
+          <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${build}">
+          <include name="**/*.jar"/>
+        </fileset>
+      </classpath>
+    </java>
+  </target>
+
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="SU Smack Extensions">
+        <title>SU Smack Extensions</title>
+        <body>
+            <breadcrumbs>
+              <item name="SU" href="http://www.su.se"/>
+              <item name="SU OpenSource" href="http://devel.it.su.se/"/>
+            </breadcrumbs>
+                <links>
+                        <item name="SU OpenSoruce" href="http://devel.it.su.se/" />
+                        <item name="Smack" href="http://www.jivesoftware.org/smack/" />
+                </links>
+        </body>
+</project>

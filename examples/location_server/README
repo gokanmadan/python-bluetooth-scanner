@@ -1,0 +1,14 @@
+This is a really simple example of how the bluetooth scanner can be used with a simple webserver
+to build a location server.
+
+when run from this directory do:
+
+python start.py
+
+in another console try:
+
+curl "http://localhost:9090/?query=address&address=MAC_ADDRESS_HERE"
+
+curl "http://localhost:9090/?query=location&x=-1&y=-1&z=-1"
+
+

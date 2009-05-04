@@ -1,0 +1,9 @@
+smack.test.pubsub=pubsub.test.hab.la
+smack.test.sender.jid=test7@test.hab.la/sender
+smack.test.sender.password=test7
+smack.test.receiver.jid=test8@test.hab.la/receiver
+smack.test.receiver.password=test8
+smack.test.node0=/home/test.hab.la/test7
+smack.test.node=/home/test.hab.la/test7/btscan
+smack.test.debug=true
+smack.test.trace=true

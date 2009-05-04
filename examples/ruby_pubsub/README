@@ -1,0 +1,14 @@
+#! /usr/bin/ruby
+
+This is an example of a simple ruby subscriber for a XMPP pubsub setup.
+
+Eventually I will write a tutorial for setting up a nice unsecure ejabberd for pub-sub.
+
+There's a nice tutorial covering part of it at:
+http://www.keoko.net/2008/12/xmpp-pubsub-with-ejabberd-and-xmpp4r/
+
+I also found:
+http://www.ejabberd.im/mod_pubsub-usage
+
+pretty helpful.
+

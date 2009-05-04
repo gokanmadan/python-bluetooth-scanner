@@ -1,0 +1,44 @@
+So it's pretty tricky to setup ejabberd.
+
+Here's how you'd do it on Ubuntu:
+
+sudo apt-get install ejabberd
+
+
+%
+% edit the /etc/ejabberd/ejabberd.cfg
+%
+
+Line 54:
+% add your hostname to the list of hosts:
+%% Hostname
+{hosts, ["localhost", "pubjab.be-n.com"]}.
+
+Line 291:
+%
+% Allow anonymous login, if you want to
+%
+{host_config, "pubjab.be-n.com", [{auth_method, [anonymous,internal]},
+                                  {anonymous_protocol, both}]}.
+
+Line 475:
+%
+% Make sure the access_model for pubsub is open.
+%
+{mod_pubsub,   [ % requires mod_caps
+                {access_createnode, pubsub_createnode},
+                {access_model, open},
+                {plugins, ["default", "pep"] }
+               ]},
+
+
+%
+% To register accounts:
+%
+ejabberdctl register test7 punjab.be-n.com password
+ejabberdctl register test8 punjab.be-n.com password
+
+%
+% To restart
+%
+ejabberdctl restart

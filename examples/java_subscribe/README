@@ -1,0 +1,42 @@
+A simple JAVA example for listening to new events over XMPP.
+
+We use the Smack library from ignite.  This code does work, most of the time. I think smack might be filtering the body
+of the packets?
+
+Apparently there is a library that supports Pub Subscribe, but I've never seen it used.
+http://static.devel.it.su.se/su-smack/
+
+
+
+
+http://www.igniterealtime.org/projects/smack/index.jsp
+
+javac IQSubscribe.java -classpath smack_3_1_0/smack.jar:smack_3_1_0/smackx.jar
+
+javac -classpath smack_3_1_0/smackx.jar SubClient.java
+
+java -classpath smack_3_1_0/smackx.jar:. SubClient
+
+
+TODO:
+
+Deal with this using a packet extension, so I can parse the Messages.. etc..
+
+Then.. implement subscribe in Python.
+
+Finally:
+
+modify the face detection script.. to make it essentially.. Minimal.
+and send data over XMPP.  (in python)
+
+Write Nokoscope to XMPP bridge.
+
+Write tutorial for ejabberd.
+
+Write replay.. ?
+
+Jython XMPP to iRos.
+
+
+Short example of Bluetooth proximity detection in action.
+

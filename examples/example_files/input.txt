@@ -1,0 +1,21 @@
+# <-- comments must be first character
+#
+#
+# Basically this is just:
+#
+#	 {MAC ADDRESS}|{Received signal strength }% {delay in seconds}
+#
+# (spacing doesn't matter)
+#
+0019a90f6300  | -1 % 1
+0019a90f6301  | -2 % 1
+0019a90f6302  | -3 % 1
+0019a90f6302  | -99 % 1
+0019a90f6302  | -99 % 1
+0019a90f6302  | -99 % 1
+0019a90f6302  | -99 % 1
+0019a90f6300  | -1 % 1
+0019a90f6301  | -2 % 1
+0019a90f6302  | -3 % 1
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<document>
+	<properties>
+		<title>SU Smack Extensions</title>
+		<author email="leifj@it.su.se">Leif Johansson</author>
+	</properties>
+	
+	<body>
+		<section name="SU Smack Extensions">
+			<p>
+				This package provides extensions to the <a href="http://www.jivesoftware.org/smack">smack api</a> to among
+				other things provide support for <a href="http://www.jabber.org/jeps/jep-0060.html">JEP-0060</a>. In order
+				to build the package and pass the junit tests you must provide a 'build.xml' with the following content
+				edited to your situation:
+				<source>
+smack.test.pubsub=pubsub.xmpp.example.org
+smack.test.sender.jid=test@xmpp.example.org/sender
+smack.test.sender.password=secret1
+smack.test.receiver.jid=test2@xmpp.example.org/receiver
+smack.test.receiver.password=secret2
+smack.test.node=test2
+smack.test.debug=true
+smack.test.trace=false
+				</source>
+			</p>
+			<p>
+				By setting trace and debug the smack debugger will be run for the unit-test which will show a window
+				where packet trace is displayed.
+			</p>
+			<p>
+				In order to use the extension place the jar-file in the classpath of the application.
+			</p>
+		</section>
+	</body>
+</document>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<smackProviders>
+    <iqProvider>
+        <elementName>pubsub</elementName>
+        <namespace>http://jabber.org/protocol/pubsub</namespace>
+        <className>se.su.it.smack.provider.PubSubProvider</className>
+    </iqProvider>
+    <extensionProvider>
+    	<elementName>event</elementName>
+    	<namespace>http://jabber.org/protocol/pubsub#event</namespace>
+    	<className>se.su.it.smack.provider.PubSubEventProvider</className>
+    </extensionProvider>
+    <extensionProvider>
+    	<elementName>x</elementName>
+    	<namespace>http://jabber.org/protocol/pubsub#event</namespace>
+    	<className>se.su.it.smack.provider.PubSubXEventProvider</className>
+    </extensionProvider>
+</smackProviders>

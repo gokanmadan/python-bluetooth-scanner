@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<project name="XMPPExtensionTest" default="make sender" basedir="..">
+
+	<target name="make sender">
+		<property name="app.cp" value="smack.jar . smackx.jar"/>
+		<copy todir="bin/META-INF" file="${basedir}/build/resources/META-INF/smack.providers" /> 
+		<jar
+			destfile="target/sender.jar" 
+			basedir="bin"
+			update="yes"
+			includes="common/**/*.class, sender/**/*.class, META-INF/*.providers"
+		>
+			<manifest>
+				<attribute name="Main-Class" value="sender.Sender"/>	
+				<attribute name="Class-Path" value="${app.cp}"/> 
+			</manifest>
+		</jar>
+		
+	</target>
+	
+	<target name="make reciever">
+			<property name="app.cp" value="smack.jar . smackx.jar"/>
+			<copy todir="bin/META-INF" file="${basedir}/build/resources/META-INF/smack.providers" /> 
+			<jar
+				destfile="target/reciever.jar" 
+				basedir="bin"
+				update="yes"
+				includes="common/**/*.class, reciever/**/*.class, META-INF/*.providers"
+			>
+				<manifest>
+					<attribute name="Main-Class" value="reciever.Reciever"/>	
+					<attribute name="Class-Path" value="${app.cp}"/> 
+				</manifest>
+			</jar>
+		
+		</target>
+
+</project>
