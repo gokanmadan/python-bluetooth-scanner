@@ -23,9 +23,10 @@ from SocketServer import ThreadingMixIn
 import threading
 from cgi import parse_qs, escape
 import simplejson
-
+import time
 
 address_locations = {}
+device_map        = {}
 
 class Handler(BaseHTTPRequestHandler):
     
@@ -35,8 +36,15 @@ class Handler(BaseHTTPRequestHandler):
 
         if("?" in self.path):
           (cmd,args) = self.path.split("?")
-          self.wfile.write( simplejson.dumps( self.process(cmd, self.args_to_dict( parse_qs(args))) ))
-
+          dict_args = self.args_to_dict( parse_qs(args) )
+          res = self.process(cmd, dict_args )
+          
+          if "callback" in dict_args:
+            result = "%s(%s);" %( dict_args["callback"], simplejson.dumps(res) )
+          else:
+            result = "%s" %( simplejson.dumps(res) )
+          
+          self.wfile.write( result )
         return
 
     def process(self, cmd, data):
@@ -47,13 +55,14 @@ class Handler(BaseHTTPRequestHandler):
         Returns stored information for either one ADDRESS or all ADDRESSES at a location.
       """
       if('query' in data):
+        print address_locations
         
         if(data['query'] == "location"):
           ret = []
           for k,v in address_locations.items():
             if(v['x'] == data['x'] and v['y'] == data['y'] and v['z'] == data['z']):
               # filter expired items
-              if("current" in v and time.time() > int(data['expire'])):
+              if("expire" in v and time.time() > v['expire'] ):
                 continue
                 
               ret.append(v)
@@ -64,6 +73,11 @@ class Handler(BaseHTTPRequestHandler):
           
         
       else:
+        if "device_name" in data:
+            device_map[ data["device_id"]] = data["device_name"]
+        elif data["device_id"] in device_map:
+            data[ "device_name"] = device_map[ data["device_id"] ]
+                
         # store it
         address_locations[ data['device_id'] ] = data
         return True

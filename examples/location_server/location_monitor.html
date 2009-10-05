@@ -1,0 +1,34 @@
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<body>
+
+
+<div id="content"></div>
+
+<script>
+
+/*
+  The below is a really simple example, of how you can use JQUERY to constantly poll
+  the Bluetooth data, so that you can build a web-page that is aware of who is near a display.
+
+*/
+
+setInterval(
+  function() {
+    /* grab the URL */
+    $.getJSON(
+        "http://localhost:9090/?query=location&x=-1&y=-1&z=-1&callback=?", 
+        function(data){
+          $("#content").html("");
+          for(var i in data) {
+            $("#content").append("<div>" + data[i]["prob"] +  " - " + data[i]["device_id"] +  " - " + data[i]["device_name"] + "</div>");
+          }
+
+        } );    
+  },
+  500 );
+
+
+</script>
+</body>
+</html>

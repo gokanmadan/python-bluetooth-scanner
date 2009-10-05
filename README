@@ -31,8 +31,7 @@ Usage:
 	python bluetooth_scanner.py --help
 	
 	# Run with a sample data set:
-	python bluetooth_scanner.py -v --input examples/example_files/input.txt \
-								--names_file examples/example_files/names.txt 
+	python bluetooth_scanner.py -v --input examples/example_files/input.txt --names_file examples/example_files/names.txt 
 								
 	# post to a URL:
 	python bluetooth_scanner.py  --url http://localhost:8000/process.php
