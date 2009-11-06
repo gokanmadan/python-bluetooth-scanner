@@ -40,7 +40,7 @@ class FileBTNameDriver:
    
 try:
   import bluetooth
-  import _bluetooth as _bt
+  import bluetooth._bluetooth as _bt
   
   class Bluetoothb:
     
