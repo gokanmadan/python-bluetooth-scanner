@@ -65,7 +65,7 @@ try:
         try:
             sock = _bt.hci_open_dev (device)
         except:
-            raise BluetoothError ("error accessing bluetooth device")
+            raise ValueError("error accessing bluetooth device")
 
         timeoutms = int (timeout * 1000)
         try: 
