@@ -140,10 +140,12 @@ class FilterNameLookup(Filter):
     # ok, we may have 2 devices, we may have one, but this filter will need to know
     # so we can get the device, and release it.
     # it will probably just be a lock, and a hash table.
+    print self.devices
     for d in self.devices:
       if(not d.lock.locked() ):
         return d
-   
+    
+    return d
     logger.critical("Returning an empty lock, this is bad and should NEVER HAPPEN")   
     # hmm.. with only 2 threads.. this should work fine
     # 
