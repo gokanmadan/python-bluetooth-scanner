@@ -58,6 +58,7 @@ try:
         # NOTE: I had to rewrite this for the latest bluez, 
         # the reason this is complicated is because I need to select the device,
         # before making the call.
+        # http://code.google.com/p/pybluez/source/detail?spec=svn27&r=22
         if not bluetooth.is_valid_address(address): 
             raise ValueError("%s is not a valid Bluetooth address" % address)
         
