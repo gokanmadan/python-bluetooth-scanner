@@ -113,7 +113,7 @@ class FilterNameLookup(Filter):
     self.last_cache_clear = time.time()
     
     for d in devices:
-      self.devices.append(Device(d, btdriver))
+      self.devices.append(Device(d, btdriver() )) # make sure pass an object to devices
   
   def clear_cache(self):
     " clears the bluetooth name cache after 24 hours"

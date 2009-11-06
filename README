@@ -7,7 +7,8 @@ This is a VERY simple example of basic fast bluetooth scanner
 that uses 2 physical bluetooth dongles to detech nearby users at a rapid rate
 
 It is adapted from the bluetooth module in SSAPP (Simple Sensor Architecture for Pervasive Prototyping),
-but designed to be even easier to use.
+but designed to be even easier to use.  It is designed for use with an Ubuntu computer, and D-link DBT-120 bluetooth dongles, though anything that supports standard RSSI will work.
+
 
 You will need a few libraries to make this work:
 
@@ -25,6 +26,19 @@ To use Nokoscope you will need a copy of the Nokia eb2lib from nokia.
 Caveats:
 	This scanner assumes that your servers will be up, and not slow.  If they are down, or really slow
 	it will still work, but it won't be quite as synchronous.
+
+
+Quickstart:
+
+1) install above modules:
+
+2) make
+
+3) cd examples/location_server
+
+4) python start_with_fake_data.py
+
+5) python start.py # to run with real data.
 
 
 Usage:
@@ -50,16 +64,6 @@ Usage:
 	# publish over XMPP using pub subscribe
 	python bluetooth_scanner.py -v --input examples/example_files/input.txt --names_file examples/example_files/names.txt --jabber_user=test@pubjab.be-n.com --jabber_password=test --jabber_pubsub 
 
-
-TODO:
-* put on GIThub
-* make simple video demonstrating it
-* simple example application.
-
--- 
-tommorrow todo:
-
-Mouly-- YUI -- and Virtual Machine.
 
 
 
