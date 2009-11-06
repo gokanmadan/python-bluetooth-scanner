@@ -62,7 +62,11 @@ try:
         if not bluetooth.is_valid_address(address): 
             raise ValueError("%s is not a valid Bluetooth address" % address)
         
-        sock = bluetooth._gethcisock(device)
+        try:
+            sock = _bt.hci_open_dev (device)
+        except:
+            raise BluetoothError ("error accessing bluetooth device")
+
         timeoutms = int (timeout * 1000)
         try: 
             name = _bt.hci_read_remote_name (sock, address, timeoutms)
