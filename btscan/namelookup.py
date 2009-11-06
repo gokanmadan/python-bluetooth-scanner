@@ -55,18 +55,21 @@ try:
       """
       logger.debug("Device: %s " % (device))
       if sys.platform == "linux2":
-          bluetooth._checkaddr(address)
-          sock = bluetooth._gethcisock(device)
-          timeoutms = int(timeout * 1000)
-          try:
-              name = bluetooth._bt.hci_read_remote_name( sock, address, timeoutms )
-          except bluetooth._bt.error, e:
-              print e
-              logger.debug("Lookup Failed")
-              # name lookup failed.  either a timeout, or I/O error
-              name = None
-          sock.close()
-          return name
+        # NOTE: I had to rewrite this for the latest bluez, 
+        # the reason this is complicated is because I need to select the device,
+        # before making the call.
+        if not bluetooth.is_valid_address(address): 
+            raise ValueError("%s is not a valid Bluetooth address" % address)
+        
+        sock = bluetooth._gethcisock(device)
+        timeoutms = int (timeout * 1000)
+        try: 
+            name = _bt.hci_read_remote_name (sock, address, timeoutms)
+        except _bt.error, e:
+            # name lookup failed.  either a timeout, or I/O error
+            name = None
+            sock.close()
+        return name          
       elif sys.platform == "win32":
           if not bluetooth.is_valid_address(address):
               raise ValueError("Invalid Bluetooth address")
