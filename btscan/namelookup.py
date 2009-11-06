@@ -40,7 +40,8 @@ class FileBTNameDriver:
    
 try:
   import bluetooth
-
+  import _bluetooth as _bt
+  
   class Bluetoothb:
     
     def lookup_name(self,address, device=-1, timeout=10):
