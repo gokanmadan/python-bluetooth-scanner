@@ -255,7 +255,7 @@ def process_output_callback(data):
     return
 
   if(options.verbose):
-    logger.info(data)
+    logger.info(simplejson.dumps(data))
 
   if(options.callback_url):
     try:
